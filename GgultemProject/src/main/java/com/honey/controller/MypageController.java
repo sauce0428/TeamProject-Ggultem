@@ -37,13 +37,13 @@ public class MypageController {
     }
     
     @PutMapping("/{no}")
-    public Map<String, String> putMethodName(@PathVariable(name = "no") Long no, MemberDTO memberDTO) {
+    public Map<String, String> modify(@PathVariable(name = "no") Long no, MemberDTO memberDTO) {
         service.modify(memberDTO);
     	return Map.of("RESULT", "SUCCESS");
     }
     
-    @PutMapping("delete/{no}")
-    public Map<String, String> putMethodName(@PathVariable(name = "no") Long no) {
+    @PutMapping("remove/{no}")
+    public Map<String, String> remove(@PathVariable(name = "no") Long no) {
         service.remove(no);
         return Map.of("RESULT", "SUCCESS");
     }

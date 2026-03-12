@@ -53,7 +53,7 @@ public class MemberController {
 		return Map.of("RESULT", "SUCCESS");
 	}
 
-	@PutMapping("/delete/{no}")
+	@PutMapping("/remove/{no}")
 	public Map<String, String> remove(@PathVariable(name = "no") Long no) {
 		service.remove(no);
 		return Map.of("RESULT", "SUCCESS");

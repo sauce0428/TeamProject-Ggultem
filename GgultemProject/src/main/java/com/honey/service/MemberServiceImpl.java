@@ -88,6 +88,16 @@ public class MemberServiceImpl implements MemberService {
 		Member member = result.orElseThrow();
 
 		member.changeStatus(0);
+		
+		List<String> oldFileNames = member.getThumbnailList().stream()
+	            .map(thumbnail -> thumbnail.getFileName())
+	            .collect(Collectors.toList());
+	    
+	    if (oldFileNames != null && !oldFileNames.isEmpty()) {
+	        fileUtil.deleteFiles(oldFileNames);
+	    }
+
+	    member.clearList();
 
 		memberRepository.save(member);
 	}
