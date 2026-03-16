@@ -64,7 +64,7 @@ public class BusinessMember extends BaseTimeEntity {
     private LocalDateTime stopEndDate;  // 정지 종료일
     
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "member_auth", joinColumns = @JoinColumn(name = "business_member_no"))
+    @CollectionTable(name = "business_member_auth", joinColumns = @JoinColumn(name = "business_member_no"))
     @Column(name = "auth") // 권한 내용이 들어갈 컬럼명
     @Builder.Default
     private Set<String> authSet = new HashSet<>();
