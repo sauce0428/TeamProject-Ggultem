@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.honey.dto.ChatRoomDTO;
 import com.honey.dto.PageRequestDTO;
 import com.honey.dto.PageResponseDTO;
+import com.honey.dto.SearchDTO;
 import com.honey.service.ChatRoomService;
 
 import lombok.RequiredArgsConstructor;
@@ -39,8 +40,8 @@ public class ChatRoomController {
 	}
 	
 	@GetMapping("/list")
-	public PageResponseDTO<ChatRoomDTO> list(PageRequestDTO pageRequestDTO) {
-		return service.list(pageRequestDTO);
+	public PageResponseDTO<ChatRoomDTO> list(SearchDTO searchDTO) {
+		return service.list(searchDTO);
 	}
 	
 	@PutMapping("/{roomId}")
