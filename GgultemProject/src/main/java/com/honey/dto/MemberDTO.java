@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,6 +55,12 @@ public class MemberDTO extends User {
 	
 	@Builder.Default
 	private List<String> uploadFileNames = new ArrayList<>();
+	
+	// 1. 기본 생성자 (바인딩을 위해 필요)
+    // 부모 클래스인 User에 기본 생성자가 없으므로 super()에 가짜 값을 넣어서라도 생성해야 합니다.
+    public MemberDTO() {
+        super("dummy", "dummy", new ArrayList<>());
+    }
 	
 	
 	public MemberDTO(String email, String pw, String nickname, boolean social, Set<String> roleNames, LocalDateTime regDate) { 

@@ -78,7 +78,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {
 		String path = request.getRequestURI();
 		log.info("check uri. .............. " + path);
 		// api/member/ 경로의 호출은 체크하지 않음
-		if (path.startsWith("/login") || path.equals("/") || path.equals("/member/refresh")) {
+		if (path.startsWith("/") || path.equals("/") || path.equals("/member/refresh")) {
 			return true;
 		}
 		if (path.contains("/member/kakao")) {

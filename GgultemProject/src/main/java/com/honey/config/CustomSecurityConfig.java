@@ -50,9 +50,9 @@ public class CustomSecurityConfig {
 		//리다이렉트된다. 
 		// ✅ [추가] 인증 없이 접근 가능한 경로 설정
 	    http.authorizeHttpRequests(auth -> auth
-	        .requestMatchers("/", "/member/kakao", "/api/member/kakao").permitAll() // 메인, 로그인, 회원가입, 상품목록은 허용
-	        .requestMatchers("/error", "/login").permitAll()
-	        .anyRequest().authenticated() // 그 외 모든 요청은 인증 필요
+	        //.requestMatchers("/", "/member/kakao", "/api/member/kakao").permitAll() // 메인, 로그인, 회원가입, 상품목록은 허용
+	        //.requestMatchers("/error", "/login").permitAll()
+	        .anyRequest().permitAll() // 임시 : 모두 허용
 	    );
 		http.formLogin(config ->{  
 		config.loginPage("/login");
@@ -106,6 +106,9 @@ public class CustomSecurityConfig {
                         .build();
                 admin.addRole(MemberRole.MEMBER);
                 admin.addRole(MemberRole.ADMIN);
+                
+                // ✅ 기본 썸네일 파일명을 리스트에 명시적으로 추가
+                admin.addImageString("default.jpg");
 
                 memberRepository.save(admin);
                 System.out.println("✅ 관리자 계정이 자동 생성되었습니다: " + adminEmail);

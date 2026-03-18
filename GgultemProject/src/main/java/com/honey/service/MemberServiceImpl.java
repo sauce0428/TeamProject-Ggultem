@@ -215,6 +215,9 @@ public class MemberServiceImpl implements MemberService {
                 .social(true)
                 .build();
         
+        // ✅ 기본 썸네일 파일명을 리스트에 명시적으로 추가
+        member.addImageString("default.jpg");
+        
         member.addRole(MemberRole.USER); // 기본 권한 부여
         memberRepository.save(member);
         
